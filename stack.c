@@ -44,9 +44,6 @@ void display(int action,int ser)
                     printf("\n| Roll Number: %d, Name: %s |", temp->roll_number, temp->name  ); 
                     printf(" SEARCH NOT FOUND");
                 }
-                // else
-                // {
-                // }
                 break;
         }
             temp = temp->ptr;
