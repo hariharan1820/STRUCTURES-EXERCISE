@@ -1,0 +1,134 @@
+#include <stdio.h>
+
+int seating(roll,numberoftables,studentpertable,student,remaining,stuintable)
+{  
+    
+    int table[numberoftables][studentpertable];
+    if(stuintable!=2)
+    {   
+        for(int tabl=0;tabl<numberoftables;tabl++,student=1,roll++)
+        {
+            asd();
+        }
+    }
+    else
+    {
+        for(int tabl=0;tabl<numberoftables;tabl++,student=1,roll)
+        {
+            asd();
+        }
+        }
+}
+
+int asd()
+{
+        for(int seat=0;seat<studentpertable;seat++)
+        {
+            if(student%2!=0)
+            {
+            table[tabl][seat]=student;
+            student++;
+            }
+            else
+            {   student=0;
+                table[tabl][seat]=student;
+                student++;
+                roll=roll+1;
+            }
+        }
+
+    
+    for (int i = 0; i < numberoftables; i++)
+    {
+        printf("Table %d: ", i + 1);
+        for (int j = 0; j <studentpertable; j++) 
+        {
+           printf("%d ", table[i][j]);
+        }
+            printf("\n");   
+    }
+     //printf("next batch roll number start with :%d\n",roll);
+     printf("%s\n","~~~~~~~~");
+     return roll;
+}
+int main() {
+    int batch,remaining,stuintable;
+    int count=1;
+    int numberofstudents;
+    printf("ENTER TOTAL NUMBER OF STUDENT:");
+    scanf("%d",&numberofstudents);
+    int numberoftables;
+    printf("ENTER TOTAL NUMBER OF TABLE:");
+    scanf("%d",&numberoftables);
+    int studentpertable;
+    printf("ENTER CAPACITY OF TABLE(3/4/5):");
+    scanf("%d",&studentpertable);
+    int table[numberoftables][studentpertable];
+    int extable[numberoftables][studentpertable];
+    switch(studentpertable)
+    {
+        case 3:
+            stuintable=2;
+            printf("ENTER PER TABLE IS: 2");
+            break;
+        case 4:
+            stuintable=2;
+            printf("ENTER PER TABLE IS: 2");
+            break;
+        case 5:
+            stuintable=3;
+            printf("ENTER PER TABLE IS: 3");
+            break;
+    }
+    int spr=(numberoftables*stuintable);   //student per room
+    for(int i=spr;spr<=i&&i<=numberofstudents;)
+    {
+        batch++;
+        i=i+spr;
+    }
+    printf("\n\nSTUDENT PER ROOM:%d",spr);
+    printf("\nTotal number of batch:%d + 1",batch);
+   
+    remaining=numberofstudents-(batch*spr);
+    printf("\nremaining:%d\n\n\n",remaining);
+    
+    int student=1;
+    int roll=1;
+    printf("seating order for batch 1-%d :\n",batch);
+    for(int i=1;i<=batch;i++)
+    {
+        roll=seating(roll,numberoftables,studentpertable,student,stuintable);
+    }
+   
+   if(remaining>0)
+   {
+    printf("SEATING ARRANGEMENT FOR BATCH  :%d",batch+1);
+    for(int i=0;i<numberoftables;i++,student=1)
+    {
+        for(int j=0;j<studentpertable;j++)
+        {
+            if((student % 2 !=0 ) && (count<=remaining))
+            {
+                extable[i][j]=1;
+                student--;
+                count++;
+            }
+            else
+            {
+                student=0;
+                extable[i][j]=0;
+                student++;
+            }
+        }
+    }
+    for (int i = 0; i < numberoftables; i++)
+    {
+        printf("\nTable %d: ", i + 1);
+        for (int j = 0; j <studentpertable; j++) 
+        {
+           printf("%d ", extable[i][j]);
+        }
+           
+    }
+}
+}
